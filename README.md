@@ -1,3 +1,5 @@
+![github workflow](https://github.com/dlehammer/gradle-22466-multiple-plugin-test-demo/actions/workflows/gradle.yml/badge.svg)
+
 # :white_check_mark: Gradle TestKit workaround for combining multiple plugins
 
 ## :dart: Purpose
