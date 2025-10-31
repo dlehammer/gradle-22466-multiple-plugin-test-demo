@@ -1,0 +1,47 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+group = 'multiple.plugin.test.demo'
+version = demoPluginVersion
+
+dependencies {
+    compileOnly "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+
+    testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
+}
+
+gradlePlugin {
+    plugins {
+        build {
+            id = 'multiple-plugin-test-demo'
+            displayName = 'Multiple plugin test demonstration'
+            implementationClass = 'multiple.plugin.test.demo.DemoPlugin'
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = 'testMavenLocal'
+            url = layout.buildDirectory.dir('tmp/test/mvn-repo-override')
+        }
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+tasks.test.dependsOn(tasks.publishAllPublicationsToTestMavenLocalRepository)
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+}
