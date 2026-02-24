@@ -65,6 +65,8 @@ repositories {
     private void injectGradleProperties() {
         File gradleProperties = new File(testDirectory, 'gradle.properties')
         Path.of('gradle.properties').withReader { gradleProperties.append(it) }
+
+        gradleProperties.append("springBootVersion=${System.getProperty('springBootVersionWorkaround')}")
     }
 
     private void injectMainClass() {

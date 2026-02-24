@@ -4,6 +4,9 @@ plugins {
     id 'maven-publish'
 }
 
+// (temporary) Dependabot workaround ~ awaits https://github.com/dependabot/dependabot-core/issues/1618
+project.ext.springBootVersion = '4.0.2'
+
 group = 'multiple.plugin.test.demo'
 version = demoPluginVersion
 
@@ -43,6 +46,9 @@ tasks.test.dependsOn(tasks.publishAllPublicationsToTestMavenLocalRepository)
 
 test {
     useJUnitPlatform()
+
+    systemProperty 'springBootVersionWorkaround' , project.ext.springBootVersion
+
     testLogging {
         events 'passed', 'skipped', 'failed'
     }
