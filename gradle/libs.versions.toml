@@ -1,6 +1,6 @@
 # (temporary) Dependabot workaround ~ awaits https://github.com/dependabot/dependabot-core/issues/1618
 [versions]
-springBoot = "4.0.2"
+springBoot = "4.0.3"
 
 [libraries]
 spring-boot-gradle-plugin = { group = "org.springframework.boot", name = "spring-boot-gradle-plugin", version.ref = "springBoot" }
