@@ -10,7 +10,7 @@ version = demoPluginVersion
 dependencies {
     compileOnly libs.spring.boot.gradle.plugin
 
-    testImplementation 'org.spockframework:spock-core:2.4-groovy-4.0'
+    testImplementation 'org.spockframework:spock-core:2.5-groovy-4.0'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
